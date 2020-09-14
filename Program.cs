@@ -19,7 +19,7 @@ namespace TestProject
             
             var drinks = new List<Drink>(){juice, beer, soda };
             drinks.ForEach(dd => {
-                Console.WriteLine(dd.Description());
+                Console.WriteLine(dd.Description);
             
             });
         }        

@@ -44,5 +44,13 @@ namespace TestProject
             var beer = new Beer("Heineken", "20%");
             Assert.True(String.Equals("20%",  beer.AlcoholContent, StringComparison.OrdinalIgnoreCase));
         }
+
+        //Budweiser, carbonated, 5% alcohol
+        [Fact]
+        public void TestBeer_Description_Valid()
+        {
+            var beer = new Beer("Budweiser", "5% alcohol");
+            Assert.True(String.Equals("Budweiser, carbonated, 5% alcohol",  beer.AlcoholContent, StringComparison.OrdinalIgnoreCase));
+        }
     }
 }

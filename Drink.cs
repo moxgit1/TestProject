@@ -4,15 +4,14 @@ using System.Linq;
 namespace TestProject
 {
 
-public abstract class Drink
-    {
+    public abstract class Drink
+    {        
         public readonly string Carbonated = "carbonated";
         public readonly string NotCarbonated = "not carbonated";
 
         //drink name, whether it is carbonated, and a calculated 
         //description of the drink
         public string Name{get; protected set;}
-
 
         public bool IsCarbonated{ get; protected set;}
         
@@ -30,8 +29,11 @@ public abstract class Drink
             return $"{Name}, {CarbonatedDescription}";
         }
 
-       //
-        public virtual string Description() => ToString();
+       //a calculated description of the drink to be overwritten
+        public virtual  string Description
+        {
+            get { throw new NotImplementedException(); }            
+        }
         
     }
 
@@ -47,9 +49,13 @@ public abstract class Drink
         //the beer should have a property that indicates the alcohol content
         public string AlcoholContent {get; private set;}
 
-        public  override string Description()
+        public override string Description
         {
-            return $"{ToString()}, {AlcoholContent}.";
+            get{
+
+                return $"{ToString()}, {AlcoholContent}.";
+            }
+            
         }
     }
 
@@ -69,10 +75,19 @@ public abstract class Drink
         public string JuiceMadeFrom {get; private set;}
 
 
-        public override  string Description()
+        public override string Description
         {
-            return $"{ToString()}, {JuiceMadeFrom}.";
+            get{
+
+                return $"{ToString()}, {JuiceMadeFrom}.";
+            }
+            
         }
+
+        // public override  string Description()
+        // {
+        //     return $"{ToString()}, {JuiceMadeFrom}.";
+        // }
 
 
     }
@@ -83,6 +98,15 @@ public abstract class Drink
         {
             IsCarbonated = true;
             Name = name;
+        }
+
+        public override string Description
+        {
+            get{
+
+                return $"{ToString()}";
+            }
+            
         }
     }
 }
